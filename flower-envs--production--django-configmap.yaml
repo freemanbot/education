@@ -1,0 +1,25 @@
+apiVersion: v1
+data:
+  CELERY_FLOWER_PASSWORD: Fkr9xcPjttMfgSy7IbrugmpvhoAUYlxJeyHxe8Rk8l5hCugfKqJThZEgR6CjyUI5
+  CELERY_FLOWER_USER: pKMRIqLVGvLSzVfxInxTgPpxtonltwKF
+  DJANGO_ACCOUNT_ALLOW_REGISTRATION: "True"
+  DJANGO_ADMIN_URL: YpKBDcwParBtdslKdpxR5F24gxxmIGKR/
+  DJANGO_ALLOWED_HOSTS: .education.ma
+  DJANGO_AWS_ACCESS_KEY_ID: ""
+  DJANGO_AWS_SECRET_ACCESS_KEY: ""
+  DJANGO_AWS_STORAGE_BUCKET_NAME: ""
+  DJANGO_SECRET_KEY: ereGww4C3Pgyin0p6kdXSsqoIHOelarEmryWKrXJxughX599vSXWN79zIpFW7e7r
+  DJANGO_SECURE_SSL_REDIRECT: "False"
+  DJANGO_SERVER_EMAIL: ""
+  DJANGO_SETTINGS_MODULE: config.settings.production
+  MAILGUN_API_KEY: ""
+  MAILGUN_DOMAIN: ""
+  REDIS_URL: redis://redis:6379/0
+  SENTRY_DSN: ""
+  WEB_CONCURRENCY: "4"
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: flower-envs--production--django
+  name: flower-envs--production--django

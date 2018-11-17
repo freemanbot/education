@@ -1,0 +1,138 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose -f production.yml convert
+    kompose.version: 1.17.0 (a74acad)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: celerybeat
+  name: celerybeat
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: celerybeat
+    spec:
+      containers:
+      - args:
+        - /start-celerybeat
+        env:
+        - name: CELERY_FLOWER_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              key: CELERY_FLOWER_PASSWORD
+              name: celerybeat-envs--production--django
+        - name: CELERY_FLOWER_USER
+          valueFrom:
+            configMapKeyRef:
+              key: CELERY_FLOWER_USER
+              name: celerybeat-envs--production--django
+        - name: DJANGO_ACCOUNT_ALLOW_REGISTRATION
+          valueFrom:
+            configMapKeyRef:
+              key: DJANGO_ACCOUNT_ALLOW_REGISTRATION
+              name: celerybeat-envs--production--django
+        - name: DJANGO_ADMIN_URL
+          valueFrom:
+            configMapKeyRef:
+              key: DJANGO_ADMIN_URL
+              name: celerybeat-envs--production--django
+        - name: DJANGO_ALLOWED_HOSTS
+          valueFrom:
+            configMapKeyRef:
+              key: DJANGO_ALLOWED_HOSTS
+              name: celerybeat-envs--production--django
+        - name: DJANGO_AWS_ACCESS_KEY_ID
+          valueFrom:
+            configMapKeyRef:
+              key: DJANGO_AWS_ACCESS_KEY_ID
+              name: celerybeat-envs--production--django
+        - name: DJANGO_AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            configMapKeyRef:
+              key: DJANGO_AWS_SECRET_ACCESS_KEY
+              name: celerybeat-envs--production--django
+        - name: DJANGO_AWS_STORAGE_BUCKET_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: DJANGO_AWS_STORAGE_BUCKET_NAME
+              name: celerybeat-envs--production--django
+        - name: DJANGO_SECRET_KEY
+          valueFrom:
+            configMapKeyRef:
+              key: DJANGO_SECRET_KEY
+              name: celerybeat-envs--production--django
+        - name: DJANGO_SECURE_SSL_REDIRECT
+          valueFrom:
+            configMapKeyRef:
+              key: DJANGO_SECURE_SSL_REDIRECT
+              name: celerybeat-envs--production--django
+        - name: DJANGO_SERVER_EMAIL
+          valueFrom:
+            configMapKeyRef:
+              key: DJANGO_SERVER_EMAIL
+              name: celerybeat-envs--production--django
+        - name: DJANGO_SETTINGS_MODULE
+          valueFrom:
+            configMapKeyRef:
+              key: DJANGO_SETTINGS_MODULE
+              name: celerybeat-envs--production--django
+        - name: MAILGUN_API_KEY
+          valueFrom:
+            configMapKeyRef:
+              key: MAILGUN_API_KEY
+              name: celerybeat-envs--production--django
+        - name: MAILGUN_DOMAIN
+          valueFrom:
+            configMapKeyRef:
+              key: MAILGUN_DOMAIN
+              name: celerybeat-envs--production--django
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_DB
+              name: celerybeat-envs--production--postgres
+        - name: POSTGRES_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_HOST
+              name: celerybeat-envs--production--postgres
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_PASSWORD
+              name: celerybeat-envs--production--postgres
+        - name: POSTGRES_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_PORT
+              name: celerybeat-envs--production--postgres
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_USER
+              name: celerybeat-envs--production--postgres
+        - name: REDIS_URL
+          valueFrom:
+            configMapKeyRef:
+              key: REDIS_URL
+              name: celerybeat-envs--production--django
+        - name: SENTRY_DSN
+          valueFrom:
+            configMapKeyRef:
+              key: SENTRY_DSN
+              name: celerybeat-envs--production--django
+        - name: WEB_CONCURRENCY
+          valueFrom:
+            configMapKeyRef:
+              key: WEB_CONCURRENCY
+              name: celerybeat-envs--production--django
+        image: education_production_celerybeat
+        name: celerybeat
+        resources: {}
+      restartPolicy: Always
+status: {}
